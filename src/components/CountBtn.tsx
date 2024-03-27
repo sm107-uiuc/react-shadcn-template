@@ -1,17 +1,19 @@
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import useDataStore from '@/states/useDataStore';
 
 interface Props {
   className?: string;
 }
 
 export default function CountBtn({ className }: Props) {
-  const [count, setCount] = useState(0);
+  const {clickCount, setClickCount} = useDataStore();
 
   return (
-    <Button onClick={() => setCount((count) => count + 1)} className={cn('', className)}>
-      Count is: {count}
+    <Button onClick={() => setClickCount()} className={cn('', className)}>
+      Count is: {clickCount}
+
     </Button>
   );
 }
